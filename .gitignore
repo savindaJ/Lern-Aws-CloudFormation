@@ -1,0 +1,41 @@
+# --- Deploy artifacts ---
+*.zip
+
+# --- Serverless (optional backend deploy) ---
+.serverless/
+
+# --- Node ---
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+frontend/node_modules/.tmp/
+
+# --- Frontend build ---
+frontend/dist/
+
+# --- Python ---
+**/__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+.venv/
+.env
+.env.local
+.env.*.local
+
+# Vendored into handlers during Lambda package (do not commit)
+backend/src/handlers/boto3/
+backend/src/handlers/botocore/
+backend/src/handlers/jmespath/
+backend/src/handlers/s3transfer/
+backend/src/handlers/dateutil/
+backend/src/handlers/urllib3/
+backend/src/handlers/six.py
+
+# --- OS / IDE ---
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo

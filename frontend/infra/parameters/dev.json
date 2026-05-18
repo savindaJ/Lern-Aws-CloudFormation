@@ -1,0 +1,4 @@
+[
+  { "ParameterKey": "Stage", "ParameterValue": "dev" },
+  { "ParameterKey": "ProjectName", "ParameterValue": "cloud-formation-web" }
+]

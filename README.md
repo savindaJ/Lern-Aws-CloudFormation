@@ -2,54 +2,76 @@
 
 Region: **us-west-2**
 
+**Needs:** [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html), [Node.js](https://nodejs.org/)
+
 ## 1. Setup AWS CLI (one time)
 
 ```bash
-# Install: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
-
 aws configure
-# AWS Access Key ID:     <your key>
-# AWS Secret Access Key: <your secret>
-# Default region:        us-west-2
-# Default output:        json
+# region: us-west-2
+# output: json
 
-aws sts get-caller-identity   # verify login
+aws sts get-caller-identity
+```
+
+```cmd
+aws configure
+aws sts get-caller-identity
 ```
 
 ---
 
-## 2. Backend (Serverless — Lambda + API)
+## 2. Backend (Lambda + API)
+
+**Mac / Linux**
 
 ```bash
 cd backend
 npm install
 
 ./infra/script/deploy.sh dev
-./infra/script/deploy.sh staging
-./infra/script/deploy.sh prod
-
 ./infra/script/test.sh dev
 ./infra/script/destroy.sh dev
 ```
 
+**Windows** (Command Prompt)
+
+```cmd
+cd backend
+npm install
+
+infra\script\deploy.cmd dev
+infra\script\test.cmd dev
+infra\script\destroy.cmd dev
+```
+
+Stages: `dev` | `staging` | `prod`
+
 ---
 
-## 3. Frontend (CloudFormation — S3 + CloudFront)
+## 3. Frontend (S3 + CloudFront)
+
+**Mac / Linux**
 
 ```bash
 ./frontend/infra/script/deploy.sh dev
-./frontend/infra/script/deploy.sh staging
-./frontend/infra/script/deploy.sh prod
-
-./frontend/infra/script/build.sh dev      # build only
+./frontend/infra/script/build.sh dev
 ./frontend/infra/script/destroy.sh dev
 ```
 
-Deploy prints **WebsiteUrl** (your live HTTPS link).
+**Windows**
+
+```cmd
+frontend\infra\script\deploy.cmd dev
+frontend\infra\script\build.cmd dev
+frontend\infra\script\destroy.cmd dev
+```
+
+Deploy prints **WebsiteUrl** (HTTPS link).
 
 ---
 
 ## Order
 
-1. Deploy **backend** first  
-2. Deploy **frontend** (picks up API URL automatically)
+1. **Backend** first  
+2. **Frontend** second

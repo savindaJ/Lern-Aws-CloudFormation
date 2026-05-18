@@ -20,8 +20,6 @@ frontend/dist/
 .Python
 venv/
 .venv/
-.env
-.env.local
 .env.*.local
 
 # Vendored into handlers during Lambda package (do not commit)
@@ -39,3 +37,7 @@ backend/src/handlers/six.py
 .vscode/
 *.swp
 *.swo
+config.bat
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
